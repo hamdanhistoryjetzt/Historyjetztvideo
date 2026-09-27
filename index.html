@@ -7,7 +7,6 @@
 <style>
   :root {
     --bg: #0f0f0f;
-    --bg-elev: #1c1c1c;
     --bg-hover: #272727;
     --text: #f1f1f1;
     --text-dim: #aaaaaa;
@@ -16,571 +15,264 @@
     --border: #272727;
     --radius: 12px;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html, body { height: 100%; }
-
   body {
     font-family: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
     background: var(--bg);
     color: var(--text);
-    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ============ HEADER ============ */
+  /* HEADER */
   header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    height: 56px;
-    padding: 0 16px;
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; gap: 16px;
+    height: 56px; padding: 0 16px;
     background: var(--bg);
-    backdrop-filter: blur(8px);
   }
-
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-shrink: 0;
-  }
-
+  .header-left { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
   .icon-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: none;
-    background: transparent;
-    color: var(--text);
-    display: grid;
-    place-items: center;
-    cursor: pointer;
+    width: 40px; height: 40px; border-radius: 50%;
+    border: none; background: transparent; color: var(--text);
+    display: grid; place-items: center; cursor: pointer;
     transition: background 0.15s;
   }
   .icon-btn:hover { background: var(--bg-hover); }
   .icon-btn svg { width: 24px; height: 24px; fill: currentColor; }
 
   .logo {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 700;
-    font-size: 1.25rem;
-    letter-spacing: -0.5px;
-    user-select: none;
+    display: flex; align-items: center; gap: 6px;
+    font-weight: 700; font-size: 1.25rem; letter-spacing: -0.5px;
   }
   .logo-mark {
-    position: relative;
-    width: 30px;
-    height: 21px;
-    background: var(--red);
-    border-radius: 5px;
-    display: grid;
-    place-items: center;
+    position: relative; width: 30px; height: 21px;
+    background: var(--red); border-radius: 5px;
+    display: grid; place-items: center;
   }
   .logo-mark::after {
-    content: "";
-    border-left: 8px solid #fff;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
+    content: ""; border-left: 8px solid #fff;
+    border-top: 5px solid transparent; border-bottom: 5px solid transparent;
     margin-left: 2px;
   }
 
-  .header-center {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    max-width: 720px;
-    margin: 0 auto;
-  }
-
-  .search-box {
-    display: flex;
-    width: 100%;
-    max-width: 640px;
-  }
+  .header-center { flex: 1; display: flex; justify-content: center; max-width: 720px; margin: 0 auto; }
+  .search-box { display: flex; width: 100%; max-width: 640px; }
   .search-box input {
-    flex: 1;
-    height: 40px;
-    padding: 0 16px;
-    background: #121212;
-    border: 1px solid #303030;
-    border-right: none;
-    border-radius: 20px 0 0 20px;
-    color: var(--text);
-    font-size: 0.95rem;
-    outline: none;
-    transition: border-color 0.15s;
+    flex: 1; height: 40px; padding: 0 16px;
+    background: #121212; border: 1px solid #303030; border-right: none;
+    border-radius: 20px 0 0 20px; color: var(--text);
+    font-size: 0.95rem; outline: none;
   }
   .search-box input:focus { border-color: #1c62b9; }
-  .search-box input::placeholder { color: #888; }
   .search-btn {
-    width: 64px;
-    height: 40px;
-    border: 1px solid #303030;
-    border-radius: 0 20px 20px 0;
-    background: #222;
-    color: var(--text);
-    cursor: pointer;
-    display: grid;
-    place-items: center;
-    transition: background 0.15s;
+    width: 64px; height: 40px;
+    border: 1px solid #303030; border-radius: 0 20px 20px 0;
+    background: #222; color: var(--text); cursor: pointer;
+    display: grid; place-items: center;
   }
   .search-btn:hover { background: #303030; }
   .search-btn svg { width: 22px; height: 22px; fill: currentColor; }
 
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
-  }
+  .header-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
   .avatar-btn {
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
+    width: 34px; height: 34px; border-radius: 50%;
     background: linear-gradient(135deg, #ff0055, #ff9900);
-    border: none;
-    cursor: pointer;
+    border: none; cursor: pointer;
   }
 
-  /* ============ LAYOUT ============ */
-  .app {
-    display: flex;
-    min-height: calc(100vh - 56px);
-  }
+  /* LAYOUT */
+  .app { display: flex; min-height: calc(100vh - 56px); }
 
-  /* ============ SIDEBAR NAV ============ */
+  /* SIDEBAR */
   .nav {
-    width: 240px;
-    padding: 12px;
-    flex-shrink: 0;
-    position: sticky;
-    top: 56px;
-    height: calc(100vh - 56px);
-    overflow-y: auto;
+    width: 240px; padding: 12px; flex-shrink: 0;
+    position: sticky; top: 56px;
+    height: calc(100vh - 56px); overflow-y: auto;
   }
-  .nav::-webkit-scrollbar { width: 8px; }
-  .nav::-webkit-scrollbar-thumb { background: transparent; border-radius: 4px; }
-  .nav:hover::-webkit-scrollbar-thumb { background: #3a3a3a; }
-
   .nav-item {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 10px 12px;
-    border-radius: 10px;
-    color: var(--text);
-    text-decoration: none;
-    font-size: 0.9rem;
-    cursor: pointer;
+    display: flex; align-items: center; gap: 20px;
+    padding: 10px 12px; border-radius: 10px;
+    color: var(--text); text-decoration: none;
+    font-size: 0.9rem; cursor: pointer;
     transition: background 0.15s;
   }
   .nav-item:hover { background: var(--bg-hover); }
   .nav-item.active { background: var(--bg-hover); font-weight: 500; }
   .nav-item svg { width: 22px; height: 22px; fill: currentColor; flex-shrink: 0; }
+  .nav-divider { height: 1px; background: var(--border); margin: 12px 0; }
+  .nav-section-title { padding: 8px 12px 6px; font-size: 0.95rem; font-weight: 600; }
 
-  .nav-divider {
-    height: 1px;
-    background: var(--border);
-    margin: 12px 0;
-  }
+  /* CONTENT */
+  .content { flex: 1; min-width: 0; padding: 0 24px 48px; }
 
-  .nav-section-title {
-    padding: 8px 12px 6px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--text);
-  }
-
-  .sub-item {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 8px 12px;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    color: var(--text);
-    cursor: pointer;
-    transition: background 0.15s;
-  }
-  .sub-item:hover { background: var(--bg-hover); }
-  .sub-avatar {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  /* ============ MAIN CONTENT ============ */
-  .content {
-    flex: 1;
-    min-width: 0;
-    padding: 0 24px 48px;
-  }
-
-  /* Category chips */
+  /* Chips */
   .chips {
-    display: flex;
-    gap: 12px;
-    padding: 12px 0 20px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    position: sticky;
-    top: 56px;
-    background: var(--bg);
-    z-index: 5;
+    display: flex; gap: 12px; padding: 12px 0 20px;
+    overflow-x: auto; scrollbar-width: none;
+    position: sticky; top: 56px;
+    background: var(--bg); z-index: 5;
   }
   .chips::-webkit-scrollbar { display: none; }
-
   .chip {
-    padding: 8px 14px;
-    background: var(--bg-hover);
-    border: none;
-    border-radius: 8px;
-    color: var(--text);
-    font-size: 0.875rem;
-    font-weight: 500;
-    white-space: nowrap;
-    cursor: pointer;
-    transition: background 0.15s;
+    padding: 8px 14px; background: var(--bg-hover);
+    border: none; border-radius: 8px; color: var(--text);
+    font-size: 0.875rem; font-weight: 500; white-space: nowrap;
+    cursor: pointer; transition: background 0.15s;
   }
   .chip:hover { background: #3a3a3a; }
   .chip.active { background: #f1f1f1; color: #0f0f0f; }
 
-  /* Featured / hero player */
+  /* HERO */
   .hero {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 400px;
-    gap: 24px;
-    margin-bottom: 40px;
+    gap: 24px; margin-bottom: 40px;
   }
-
   .hero-player {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #000;
-    border-radius: var(--radius);
-    overflow: hidden;
+    position: relative; width: 100%; aspect-ratio: 16 / 9;
+    background: #000; border-radius: var(--radius); overflow: hidden;
     box-shadow: 0 8px 32px rgba(0,0,0,0.5);
   }
   .hero-player iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; border: 0;
   }
-
   .hero-title {
-    font-size: 1.35rem;
-    font-weight: 600;
-    line-height: 1.3;
-    margin: 16px 0 12px;
+    font-size: 1.35rem; font-weight: 600;
+    line-height: 1.3; margin: 16px 0 12px;
   }
-
   .hero-meta {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 14px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
     flex-wrap: wrap;
   }
-
-  .channel {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex: 1;
-    min-width: 200px;
-  }
+  .channel { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 200px; }
   .channel-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    width: 40px; height: 40px; border-radius: 50%;
     background: linear-gradient(135deg, #ff0055, #ff9900);
     flex-shrink: 0;
   }
   .channel-name { font-weight: 500; font-size: 0.95rem; }
-  .channel-subs { font-size: 0.8rem; color: var(--text-dim); }
 
-  .subscribe-btn {
-    padding: 9px 16px;
-    border: none;
-    background: #f1f1f1;
-    color: #0f0f0f;
-    font-weight: 500;
-    font-size: 0.875rem;
-    border-radius: 18px;
-    cursor: pointer;
-    transition: background 0.15s;
-  }
-  .subscribe-btn:hover { background: #d9d9d9; }
-  .subscribe-btn.subscribed {
-    background: var(--bg-hover);
-    color: var(--text);
-  }
-
-  .actions {
-    display: flex;
-    gap: 8px;
-  }
+  .actions { display: flex; gap: 8px; }
   .action-btn {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
-    background: var(--bg-hover);
-    border: none;
-    border-radius: 18px;
-    color: var(--text);
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.15s;
+    display: flex; align-items: center; gap: 6px;
+    padding: 8px 14px; background: var(--bg-hover);
+    border: none; border-radius: 18px; color: var(--text);
+    font-size: 0.875rem; font-weight: 500; cursor: pointer;
+    transition: background 0.15s; text-decoration: none;
   }
   .action-btn:hover { background: #3a3a3a; }
   .action-btn svg { width: 20px; height: 20px; fill: currentColor; }
 
-  /* Up next list */
-  .up-next-title {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 12px;
-  }
-
+  /* UP NEXT */
+  .up-next-title { font-size: 1rem; font-weight: 600; margin-bottom: 12px; }
   .up-next-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    max-height: calc(100vh - 200px);
-    overflow-y: auto;
-    padding-right: 4px;
+    display: flex; flex-direction: column; gap: 8px;
+    max-height: calc(100vh - 200px); overflow-y: auto; padding-right: 4px;
   }
   .up-next-list::-webkit-scrollbar { width: 8px; }
   .up-next-list::-webkit-scrollbar-thumb { background: #3a3a3a; border-radius: 4px; }
 
   .up-next-card {
-    display: grid;
-    grid-template-columns: 168px 1fr;
-    gap: 10px;
-    padding: 6px;
-    border-radius: 10px;
-    background: transparent;
-    border: none;
-    text-align: left;
-    color: inherit;
-    font: inherit;
-    cursor: pointer;
-    transition: background 0.15s;
+    display: grid; grid-template-columns: 168px 1fr; gap: 10px;
+    padding: 6px; border-radius: 10px; background: transparent;
+    border: none; text-align: left; color: inherit;
+    font: inherit; cursor: pointer; transition: background 0.15s;
   }
   .up-next-card:hover { background: var(--bg-hover); }
   .up-next-card.active { background: var(--bg-hover); }
   .up-next-card.active .up-next-name { color: var(--accent); }
 
   .thumb {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #222;
-    flex-shrink: 0;
+    position: relative; width: 100%; aspect-ratio: 16 / 9;
+    border-radius: 8px; overflow: hidden; background: #222; flex-shrink: 0;
   }
   .thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s ease;
+    width: 100%; height: 100%; object-fit: cover;
+    display: block; transition: transform 0.3s ease;
   }
   .up-next-card:hover .thumb img { transform: scale(1.05); }
 
-  .duration {
-    position: absolute;
-    bottom: 6px;
-    right: 6px;
-    background: rgba(0,0,0,0.8);
-    color: #fff;
-    font-size: 0.72rem;
-    font-weight: 500;
-    padding: 2px 5px;
-    border-radius: 4px;
-    letter-spacing: 0.3px;
-  }
-
   .up-next-info { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
   .up-next-name {
-    font-size: 0.9rem;
-    font-weight: 500;
-    line-height: 1.3;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    font-size: 0.9rem; font-weight: 500; line-height: 1.3;
+    display: -webkit-box; -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; overflow: hidden;
   }
-  .up-next-channel {
-    font-size: 0.78rem;
-    color: var(--text-dim);
-  }
-  .up-next-stats {
-    font-size: 0.78rem;
-    color: var(--text-dim);
-  }
+  .up-next-channel { font-size: 0.78rem; color: var(--text-dim); }
 
-  /* ============ GRID SECTION ============ */
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-  .section-header h2 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    letter-spacing: -0.3px;
-  }
-  .section-header .divider-dot {
-    width: 4px;
-    height: 4px;
-    background: var(--text-dim);
-    border-radius: 50%;
-  }
-  .section-header .see-all {
-    margin-left: auto;
-    color: var(--accent);
-    font-size: 0.85rem;
-    font-weight: 500;
-    cursor: pointer;
-    padding: 6px 12px;
-    border-radius: 18px;
-    transition: background 0.15s;
-  }
-  .section-header .see-all:hover { background: rgba(62,166,255,0.1); }
-
+  /* GRID */
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .section-header h2 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.3px; }
   .video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 24px 16px;
   }
-
   .video-card {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 0;
-    text-align: left;
-    color: inherit;
-    font: inherit;
-    border-radius: 8px;
+    display: flex; flex-direction: column; gap: 12px;
+    cursor: pointer; background: none; border: none;
+    padding: 0; text-align: left; color: inherit;
+    font: inherit; border-radius: 8px;
     transition: transform 0.2s ease;
   }
   .video-card:hover { transform: translateY(-2px); }
   .video-card.active .card-title { color: var(--accent); }
 
   .card-thumb {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    border-radius: var(--radius);
-    overflow: hidden;
-    background: #222;
+    position: relative; width: 100%; aspect-ratio: 16 / 9;
+    border-radius: var(--radius); overflow: hidden; background: #222;
   }
   .card-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
+    width: 100%; height: 100%; object-fit: cover;
+    display: block; transition: transform 0.4s ease;
   }
   .video-card:hover .card-thumb img { transform: scale(1.06); }
 
-  .card-thumb::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.4));
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-  .video-card:hover .card-thumb::after { opacity: 1; }
-
-  .card-row {
-    display: flex;
-    gap: 12px;
-  }
-
+  .card-row { display: flex; gap: 12px; }
   .card-avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
+    width: 36px; height: 36px; border-radius: 50%;
     background: linear-gradient(135deg, #ff0055, #ff9900);
     flex-shrink: 0;
   }
-
   .card-info { min-width: 0; flex: 1; }
   .card-title {
-    font-size: 0.95rem;
-    font-weight: 500;
-    line-height: 1.35;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    margin-bottom: 4px;
-    transition: color 0.15s;
+    font-size: 0.95rem; font-weight: 500; line-height: 1.35;
+    display: -webkit-box; -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; overflow: hidden;
+    margin-bottom: 4px; transition: color 0.15s;
   }
-  .card-channel {
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .card-channel .check {
-    width: 12px;
-    height: 12px;
-    fill: var(--text-dim);
-  }
-  .card-stats {
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    margin-top: 2px;
-  }
+  .card-channel { font-size: 0.85rem; color: var(--text-dim); }
 
-  /* ============ RESPONSIVE ============ */
+  /* EMPTY STATE */
+  .empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-dim);
+  }
+  .empty-state h3 { color: var(--text); margin-bottom: 8px; font-size: 1.1rem; }
+  .empty-state p { font-size: 0.9rem; }
+
+  /* RESPONSIVE */
   @media (max-width: 1200px) {
     .hero { grid-template-columns: 1fr; }
     .up-next-list { max-height: none; }
   }
-
   @media (max-width: 900px) {
     .nav { display: none; }
     .content { padding: 0 16px 40px; }
   }
-
   @media (max-width: 640px) {
     .header-center { display: none; }
     .hero-title { font-size: 1.1rem; }
     .video-grid { grid-template-columns: 1fr; }
-    .actions .action-btn span { display: none; }
-    .action-btn { padding: 8px 10px; }
   }
 </style>
 </head>
 <body>
 
-<!-- ============ HEADER ============ -->
 <header>
   <div class="header-left">
     <button class="icon-btn" aria-label="Menu">
@@ -594,28 +286,22 @@
 
   <div class="header-center">
     <div class="search-box">
-      <input type="text" placeholder="Search" id="searchInput">
-      <button class="search-btn" aria-label="Search">
+      <input type="text" placeholder="Search videos" id="searchInput">
+      <button class="search-btn" id="searchBtn" aria-label="Search">
         <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
       </button>
     </div>
   </div>
 
   <div class="header-right">
-    <button class="icon-btn" aria-label="Create">
-      <svg viewBox="0 0 24 24"><path d="M14 13h-3v3H9v-3H6v-2h3V8h2v3h3zM17 6H7v12h10zm0-2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
-    </button>
-    <button class="icon-btn" aria-label="Notifications">
-      <svg viewBox="0 0 24 24"><path d="MM10 20h4a2 2 0 0 1-4 0zM12 2a6 6 0 0 0-6 6v3.6l-1.7 3.3A1 1 0 0 0 5.2 17h13.6a1 1 0 0 0 .9-1.4L18 11.6V8a6 6 0 0 0-6-6z"/></svg>
-    </button>
-    <button class="avatar-btn" aria-label="Account"></button>
+    <a class="icon-btn" href="https://github.com/hamdanhistoryjetzt" target="_blank" rel="noopener" aria-label="GitHub">
+      <svg viewBox="0 0 24 24"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.7 1.2 3.3.9.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+    </a>
   </div>
 </header>
 
-<!-- ============ APP ============ -->
 <div class="app">
 
-  <!-- Sidebar nav -->
   <nav class="nav">
     <a class="nav-item active">
       <svg viewBox="0 0 24 24"><path d="M4 10v11h6v-6h4v6h6V10L12 3z"/></svg>
@@ -629,61 +315,29 @@
       <svg viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h10v2H4z"/></svg>
       Subscriptions
     </a>
-
     <div class="nav-divider"></div>
     <div class="nav-section-title">You</div>
-
     <a class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
-      Your channel
-    </a>
-    <a class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M12 3v10l4 212 3a9 9 0 1 0 9 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 3v10l4 2M12 3a9 9 0 1 0 9 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
       History
-    </a>
-    <a class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 9l6 3-6 3z"/></svg>
-      Your videos
     </a>
     <a class="nav-item">
       <svg viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
       Watch later
     </a>
-
-    <div class="nav-divider"></div>
-    <div class="nav-section-title">Subscriptions</div>
-
-    <div class="sub-item">
-      <div class="sub-avatar" style="background:linear-gradient(135deg,#ff0055,#ff9900)"></div>
-      My Channel
-    </div>
-    <div class="sub-item">
-      <div class="sub-avatar" style="background:linear-gradient(135deg,#3ea6ff,#00d4aa)"></div>
-      Tech Daily
-    </div>
-    <div class="sub-item">
-      <div class="sub-avatar" style="background:linear-gradient(135deg,#a855f7,#ec4899)"></div>
-      Music Vibes
-    </div>
   </nav>
 
-  <!-- Main content -->
   <main class="content">
 
-    <!-- Category chips -->
-    <div class="chips">
-      <button class="chip active">All</button>
-      <button class="chip">Music</button>
-      <button class="chip">Gaming</button>
-      <button class="chip">Live</button>
-      <button class="chip">News</button>
-      <button class="chip">Podcasts</button>
-      <button class="chip">Recently uploaded</button>
-      <button class="chip">Watched</button>
-      <button class="chip">New to you</button>
+    <div class="chips" id="chips">
+      <button class="chip active" data-cat="all">All</button>
+      <button class="chip" data-cat="music">Music</button>
+      <button class="chip" data-cat="gaming">Gaming</button>
+      <button class="chip" data-cat="news">News</button>
+      <button class="chip" data-cat="podcast">Podcasts</button>
+      <button class="chip" data-cat="history">History</button>
     </div>
 
-    <!-- Hero: player + up next -->
     <section class="hero">
       <div>
         <div class="hero-player">
@@ -703,41 +357,31 @@
             <div class="channel-avatar"></div>
             <div>
               <div class="channel-name">My Channel</div>
-              <div class="channel-subs">1.2M subscribers</div>
             </div>
           </div>
 
-          <button class="subscribe-btn" id="subBtn">Subscribe</button>
-
           <div class="actions">
-            <button class="action-btn">
-              <svg viewBox="0 0 24 24"><path d="M1 21h22L12 2z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
-              <span>12K</span>
-            </button>
-            <button class="action-btn">
-              <svg viewBox="0 0 24 24"><path d="M23 21l-22 0 0-21 22 0 0 21zm-11-3l0-6 6 0-6-6 0 6-6 0 6 6z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-              <span>Share</span>
-            </button>
-            <button class="action-btn">
-              <svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2" fill="currentColor"/><circle cx="12" cy="12" r="2" fill="currentColor"/><circle cx="19" cy="12" r="2" fill="currentColor"/></svg>
+            <a class="action-btn" id="ytLink" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M10 15l5.2-3L10 9v6zM21.6 7.2c-.2-.8-.9-1.4-1.7-1.6C18.3 5.2 12 5.2 12 5.2s-6.3 0-7.9.4c-.8.2-1.5.8-1.7 1.6C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.8.9 1.4 1.7 1.6 1.6.4 7.9.4 7.9.4s6.3 0 7.9-.4c.8-.2 1.5-.8 1.7-1.6.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8z"/></svg>
+              Watch on YouTube
+            </a>
+            <button class="action-btn" id="copyBtn">
+              <svg viewBox="0 0 24 24"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11z"/></svg>
+              Copy link
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Up next -->
       <aside>
         <h2 class="up-next-title">Up next</h2>
         <div class="up-next-list" id="upNextList"></div>
       </aside>
     </section>
 
-    <!-- Grid section -->
     <section>
       <div class="section-header">
-        <h2>Recommended</h2>
-        <div class="divider-dot"></div>
-        <div class="see-all">See all</div>
+        <h2 id="sectionTitle">All videos</h2>
       </div>
       <div class="video-grid" id="videoGrid"></div>
     </section>
@@ -746,88 +390,91 @@
 </div>
 
 <script>
-  /* ---------- Your videos ---------- */
+  /* ============================================================
+     YOUR VIDEOS
+     - id: the YouTube video ID (required)
+     - cat: category — must match a chip's data-cat
+     - title: optional. Leave out and it's fetched from YouTube.
+     ============================================================ */
   const VIDEOS = [
-    { id: "rzQNLGIb6wI", duration: "10:24", views: "245K views", ago: "2 days ago" },
-    { id: "K2AUo8ShkNg", duration: "8:12",  views: "1.1M views", ago: "1 week ago" },
-    { id: "gO16NAvdH3U", duration: "15:47", views: "89K views",  ago: "3 days ago" },
-    { id: "YTUweaAqaiM", duration: "6:33",  views: "512K views", ago: "5 days ago" },
-    { id: "4qMEl5R-LMI", duration: "22:05", views: "78K views",  ago: "2 weeks ago" },
-    { id: "m9UKyhbsT9U", duration: "11:18", views: "334K views", ago: "1 day ago" },
-    { id: "zNs7Mqe7Z0A", duration: "4:52",  views: "1.8M views", ago: "3 weeks ago" },
-    { id: "n1afpoOYXSw", duration: "13:41", views: "127K views", ago: "6 days ago" },
-    { id: "7DkPYixPUf4", duration: "9:07",  views: "906K views", ago: "4 days ago" }
+    { id: "rzQNLGIb6wI", cat: "music"   },
+    { id: "K2AUo8ShkNg", cat: "gaming"  },
+    { id: "gO16NAvdH3U", cat: "news"    },
+    { id: "YTUweaAqaiM", cat: "music"   },
+    { id: "4qMEl5R-LMI", cat: "podcast" },
+    { id: "m9UKyhbsT9U", cat: "gaming"  },
+    { id: "zNs7Mqe7Z0A", cat: "music"   },
+    { id: "n1afpoOYXSw", cat: "history" },
+    { id: "7DkPYixPUf4", cat: "history" }
   ];
 
   const player      = document.getElementById("player");
   const heroTitle   = document.getElementById("heroTitle");
   const upNextList  = document.getElementById("upNextList");
   const videoGrid   = document.getElementById("videoGrid");
-  const subBtn      = document.getElementById("subBtn");
   const searchInput = document.getElementById("searchInput");
+  const searchBtn   = document.getElementById("searchBtn");
+  const chipsEl     = document.getElementById("chips");
+  const sectionTitle= document.getElementById("sectionTitle");
+  const ytLink      = document.getElementById("ytLink");
+  const copyBtn     = document.getElementById("copyBtn");
 
-  let currentId = null;
+  let currentId   = null;
+  let currentCat  = "all";
+  let currentQuery= "";
 
-  /* ---------- Helpers ---------- */
   const thumb = id => `https://i.ytimg.com/vi/${id}/mqdefault.jpg`;
   const thumbHD = id => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 
+  /* ---------- Fetch real title from YouTube (no key needed) ---------- */
   async function fetchTitle(id) {
     try {
-      const res = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`);
+      const res = await fetch(
+        `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`
+      );
       if (!res.ok) throw 0;
       const data = await res.json();
       return data.title;
-    } catch {
-      return null;
+    } catch { return null; }
+  }
+
+  /* ---------- Filter logic ---------- */
+  function matches(v) {
+    const catOk = currentCat === "all" || v.cat === currentCat;
+    const q = currentQuery.trim().toLowerCase();
+    const titleOk = !q || (v.title || "").toLowerCase().includes(q);
+    return catOk && titleOk;
+  }
+
+  /* ---------- Render grid ---------- */
+  function renderGrid() {
+    videoGrid.innerHTML = "";
+    const visible = VIDEOS.filter(matches);
+
+    if (visible.length === 0) {
+      videoGrid.innerHTML = `
+        <div class="empty-state">
+          <h3>No videos found</h3>
+          <p>Try a different search or category.</p>
+        </div>`;
+      return;
     }
-  }
 
-  /* ---------- Build Up Next ---------- */
-  function buildUpNext() {
-    VIDEOS.forEach((v, i) => {
+    visible.forEach((v, i) => {
       const card = document.createElement("button");
-      card.className = "up-next-card";
-      card.dataset.id = v.id;
-      card.innerHTML = `
-        <div class="thumb">
-          <img src="${thumb(v.id)}" loading="lazy" alt="">
-          <span class="duration">${v.duration}</span>
-        </div>
-        <div class="up-next-info">
-          <div class="up-next-name">${v.title || "Video " + (i+1)}</div>
-          <div class="up-next-channel">My Channel</div>
-          <div class="up-next-stats">${v.views} • ${v.ago}</div>
-        </div>
-      `;
-      card.addEventListener("click", () => loadVideo(v.id, v.title));
-      upNextList.appendChild(card);
-    });
-  }
-
-  /* ---------- Build Grid ---------- */
-  function buildGrid() {
-    VIDEOS.forEach((v, i) => {
-      const card = document.createElement("button");
-      card.className = "video-card";
+      card.className = "video-card" + (v.id === currentId ? " active" : "");
       card.dataset.id = v.id;
       card.innerHTML = `
         <div class="card-thumb">
           <img src="${thumbHD(v.id)}" loading="lazy" alt="">
-          <span class="duration">${v.duration}</span>
         </div>
         <div class="card-row">
           <div class="card-avatar"></div>
           <div class="card-info">
             <div class="card-title">${v.title || "Video " + (i+1)}</div>
-            <div class="card-channel">
-              My Channel
-              <svg class="check" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5z"/><path d="m10 14-3-3 1.4-1.4L10 11.2l4.6-4.6L16 8z" fill="#0f0f0f"/></svg>
-            </div>
-            <div class="card-stats">${v.views} • ${v.ago}</div>
+            <div class="card-channel">My Channel</div>
           </div>
-        </div>
-      `;
+        </div>`;
       card.addEventListener("click", () => {
         loadVideo(v.id, v.title);
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -836,13 +483,41 @@
     });
   }
 
-  /* ---------- Load video ---------- */
+  /* ---------- Render up next ---------- */
+  function renderUpNext() {
+    upNextList.innerHTML = "";
+    const visible = VIDEOS.filter(matches);
+
+    if (visible.length === 0) {
+      upNextList.innerHTML = `<div style="color:var(--text-dim);font-size:0.85rem;padding:8px;">No matches.</div>`;
+      return;
+    }
+
+    visible.forEach((v, i) => {
+      const card = document.createElement("button");
+      card.className = "up-next-card" + (v.id === currentId ? " active" : "");
+      card.dataset.id = v.id;
+      card.innerHTML = `
+        <div class="thumb">
+          <img src="${thumb(v.id)}" loading="lazy" alt="">
+        </div>
+        <div class="up-next-info">
+          <div class="up-next-name">${v.title || "Video " + (i+1)}</div>
+          <div class="up-next-channel">My Channel</div>
+        </div>`;
+      card.addEventListener("click", () => loadVideo(v.id, v.title));
+      upNextList.appendChild(card);
+    });
+  }
+
+  /* ---------- Load a video ---------- */
   function loadVideo(id, title) {
     currentId = id;
     player.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
     heroTitle.textContent = title || "Loading…";
+    ytLink.href = `https://www.youtube.com/watch?v=${id}`;
 
-    document.querySelectorAll(".up-next-card, .video-card").forEach(c => {
+    document.querySelectorAll("[data-id]").forEach(c => {
       c.classList.toggle("active", c.dataset.id === id);
     });
 
@@ -853,50 +528,67 @@
         if (v) v.title = t;
         if (currentId === id) heroTitle.textContent = t;
         document.querySelectorAll(`[data-id="${id}"]`).forEach(card => {
-          const nameEl = card.querySelector(".up-next-name, .card-title");
-          if (nameEl) nameEl.textContent = t;
+          const el = card.querySelector(".up-next-name, .card-title");
+          if (el) el.textContent = t;
         });
       });
     }
   }
 
-  /* ---------- Subscribe button ---------- */
-  subBtn.addEventListener("click", () => {
-    subBtn.classList.toggle("subscribed");
-    subBtn.textContent = subBtn.classList.contains("subscribed") ? "Subscribed" : "Subscribe";
+  /* ---------- Search ---------- */
+  function applySearch() {
+    currentQuery = searchInput.value;
+    renderGrid();
+    renderUpNext();
+  }
+  searchInput.addEventListener("input", applySearch);
+  searchInput.addEventListener("keydown", e => {
+    if (e.key === "Enter") applySearch();
   });
+  searchBtn.addEventListener("click", applySearch);
 
   /* ---------- Chips ---------- */
-  document.querySelectorAll(".chip").forEach(chip => {
-    chip.addEventListener("click", () => {
-      document.querySelector(".chip.active")?.classList.remove("active");
-      chip.classList.add("active");
-    });
+  chipsEl.addEventListener("click", e => {
+    const chip = e.target.closest(".chip");
+    if (!chip) return;
+    chipsEl.querySelector(".chip.active")?.classList.remove("active");
+    chip.classList.add("active");
+    currentCat = chip.dataset.cat;
+    sectionTitle.textContent =
+      currentCat === "all" ? "All videos"
+      : chip.textContent.trim();
+    renderGrid();
+    renderUpNext();
   });
 
-  /* ---------- Search (filters grid) ---------- */
-  searchInput.addEventListener("input", e => {
-    const q = e.target.value.toLowerCase();
-    document.querySelectorAll(".video-card").forEach(card => {
-      const name = card.querySelector(".card-title").textContent.toLowerCase();
-      card.style.display = name.includes(q) ? "" : "none";
-    });
+  /* ---------- Copy link ---------- */
+  copyBtn.addEventListener("click", async () => {
+    if (!currentId) return;
+    const url = `https://www.youtube.com/watch?v=${currentId}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      const original = copyBtn.innerHTML;
+      copyBtn.innerHTML = "Copied!";
+      setTimeout(() => { copyBtn.innerHTML = original; }, 1500);
+    } catch {
+      prompt("Copy this link:", url);
+    }
   });
 
   /* ---------- Init ---------- */
-  buildUpNext();
-  buildGrid();
+  renderGrid();
+  renderUpNext();
   loadVideo(VIDEOS[0].id, VIDEOS[0].title);
 
-  /* ---------- Load real titles in background ---------- */
+  /* ---------- Load real titles in the background ---------- */
   VIDEOS.forEach(v => {
     if (v.title) return;
     fetchTitle(v.id).then(t => {
       if (!t) return;
       v.title = t;
       document.querySelectorAll(`[data-id="${v.id}"]`).forEach(card => {
-        const nameEl = card.querySelector(".up-next-name, .card-title");
-        if (nameEl) nameEl.textContent = t;
+        const el = card.querySelector(".up-next-name, .card-title");
+        if (el) el.textContent = t;
       });
       if (currentId === v.id) heroTitle.textContent = t;
     });
